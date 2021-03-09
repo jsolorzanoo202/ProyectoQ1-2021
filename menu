@@ -1,0 +1,48 @@
+import pandas as pd  # Importación de una libreria
+from openpyxl import load_workbook  # Importación de una libreria
+
+
+def EscribirArchivo(prestamos):  # Guarda en un archivo excel los prestamos
+    # definimos el nombre del archivo excel en el que vamos a guardar datos
+    writer = pd.ExcelWriter('prestamos.xlsx', engine='openpyxl')
+    wb = writer.book
+    df = pd.DataFrame(prestamos)  # escribimos en el archivo la lista
+    df.to_excel(writer, index=False)
+    wb.save('prestamos.xlsx')  # Guarda el archivo
+
+
+def Lineas():  # Imprime asterizcos
+    print("***********************************")
+
+
+def CargarPersonas():  # Funcion que lee el archivo de de personas en formato excel y retorna los datos leidos
+    # Definimos el nombre del archivo excel a leer y lo asignamos en una variable la cual vamos retornar en la funcion
+    rd = pd.read_excel('personasv2.xlsx', engine='openpyxl')
+    return rd  # Retornamos los datos que se encontraron en el excel
+
+
+def CargarPrestamos():  # Funcion que lee el archivo de prestamos en formato excel y retorna los datos leidos
+    # Definimos el nombre del archivo excel a leer y lo asignamos en una variable la cual vamos retornar en la funcion
+    rd = pd.read_excel('prestamos.xlsx', engine='openpyxl')
+    return rd  # Retornamos los datos que se encontraron en el excel
+
+
+def CargarLibros():  # Funcion que lee el archivo de libros en formato excel y retorna los datos leidos
+    # Definimos el nombre del archivo excel a leer y lo asignamos en una variable la cual vamos retornar en la funcion
+    rd = pd.read_excel('librosv2.xlsx', engine='openpyxl')
+    return rd  # Retornamos los datos que se encontraron en el excel
+
+
+def Menu():  # Funcion que muestra las opciones de menú
+    Lineas()  # Llamada a la funcion Lineas
+    print("a - Ver lista de personas")  # Impresión en consola de un mensaje
+    # Impresión en consola de un mensaje
+    print("b - Ordenar lista de personas")
+    # Impresión en consola de un mensaje
+    print("c - Imprimir registro de lista de persona")
+    print("d - Ver lista de libros")  # Impresión en consola de un mensaje
+    print("e - Buscar libro")  # Impresión en consola de un mensaje
+    print("f - Prestar libro")  # Impresión en consola de un mensaje
+    print("g - Ver prestamo de libros")  # Impresión en consola de un mensaje
+    # Impresión en consola de un mensaje
+    print("h - Opción para salir del programa ")
